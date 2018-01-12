@@ -1,0 +1,16 @@
+---
+- name: Update cache
+  apt: 
+    update_cache: yes
+  changed_when: false
+- name: Full OS Upgrade
+  shell: apt-get dist-upgrade --force-yes -y
+  register: update_cmd
+  args:
+    warn: false
+  changed_when: false
+- debug: 
+    msg: updates got installed
+  when: update_cmd.stdout.find('0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded') == -1
+when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+...
