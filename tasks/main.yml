@@ -1,28 +1,11 @@
 ---
 # tasks file for joe-speedboat.ospatch
 
-- name: perform full upgrade
-  block:
-  - name: resolve platform specific tasks for full upgrade
-    tasks_include: 'full-{{item}}'
-    with_first_found:
-      - files:
-          - '{{ansible_distribution}}-{{ansible_distribution_major_version}}.yml'
-          - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-          - '{{ansible_distribution}}.yml'
-          - '{{ansible_os_family}}.yml'
-        skip: true
-  when: ospatch_level == 'full'
-
-- name: perform security patching
-  block:
-  - name: resolve platform specific tasks for security patching
-    tasks_include: 'sec-{{item}}'
-    with_first_found:
-      - files:
-          - '{{ansible_distribution}}-{{ansible_distribution_major_version}}.yml'
-          - '{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-          - '{{ansible_distribution}}.yml'
-          - '{{ansible_os_family}}.yml'
-        skip: true
-  when: ospatch_level == 'security'
+- include_tasks: '{{item}}'
+  with_first_found:
+    - files:
+        - '{{ ospatch_level }}-{{ansible_distribution}}-{{ansible_distribution_major_version}}.yml'
+        - '{{ ospatch_level }}-{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
+        - '{{ ospatch_level }}-{{ansible_distribution}}.yml'
+        - '{{ ospatch_level }}-{{ansible_os_family}}.yml'
+      skip: true
