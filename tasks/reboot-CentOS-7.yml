@@ -1,0 +1,13 @@
+---
+- name: check if reboot is needed
+  shell: needs-restarting | wc -l
+  register: needs_restarting
+  changed_when: needs_restarting.stdout|int != 0
+
+- name: reboot {{ inventory_hostname }} if needed
+  shell: sleep 2 && shutdown -r now "Ansible reboot triggered"
+  async: 1            # fire and forget # fire and forget # fire and forget 
+  poll: 0             # do not poll for updates on this task
+  ignore_errors: true # due rebooting can break the return_code
+  when: needs_restarting.stdout|int != 0 and ospatch_reboot == true
+...
