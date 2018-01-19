@@ -1,7 +1,8 @@
 ---
-- hosts: vm01, install
+- hosts: all
   remote_user: root
   roles:
     - joe-speedboat.ospatch
   vars:
   - ospatch_level: full
+  - ospatch_reboot: true

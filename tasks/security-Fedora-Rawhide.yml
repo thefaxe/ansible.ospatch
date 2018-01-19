@@ -1,15 +1,15 @@
 ---
 - name: install needed packages
-  yum: 
+  dnf: 
     name: yum-utils
     state: present
-- name: install security patches with yum
+- name: install security patches with yum (dnf does not yet provide security patch selection)
   yum:
     name: '*'
     state: latest
     security: yes
 - name: install all kernel updates with yum
-  yum:
+  dnf:
     name: 'kernel*'
     state: latest
 ...
