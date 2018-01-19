@@ -11,15 +11,10 @@ galaxy_info:
     - 7
     - 6
   - name: Fedora
-    versions:
-    - Rawhide
   - name: Ubuntu
-    versions:
-    - 14.04
-    - 16.04
   galaxy_tags:
   - system
   - patching
   - sysadmin
 
-dependencies: [joe-speedboat.ospatch]
+dependencies: []
