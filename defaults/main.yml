@@ -4,12 +4,13 @@
 # ospatch_level: [none|security|full]
 ospatch_level: security
 
+# reboot os if updates need to
+# ospatch_reboot: [true|false]
+ospatch_reboot: true
+
 # remove old kernel to free space
 # ospatch_remove_old_kernel: [true|false]
 #ospatch_remove_old_kernel: true
 #ospatch_keep_kernel_nr: 3
 
-# reboot os if updates need to
-# ospatch_reboot: [true|false]
-ospatch_reboot: true
 ...
