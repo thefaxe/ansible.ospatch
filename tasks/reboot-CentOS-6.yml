@@ -4,14 +4,14 @@
   register: needs_restarting
   changed_when: needs_restarting.stdout|int != 0
 
-- name: reboot {{ inventory_hostname }} if needed
+- name: reboot host if needed
   block:
-  - name: reboot host {{ inventory_nodename }}
+  - name: reboot host 
     shell: sleep 5 ; shutdown -r now "Ansible reboot"
     async: 10 # do not care for 10 sec (we left in 5 sec)
     poll: 0  # fire and forget
 
-  - name: wait for {{ inventory_nodename }} to finish reboot
+  - name: wait for host to finish reboot
     wait_for:
       port: "{{ ansible_port }}"
       host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
@@ -19,7 +19,7 @@
       delay: 10  # do not check for at least 10 sec
     connection: local
 
-  - name: confirm {{ inventory_nodename }} has booted within 300 sec
+  - name: confirm host has booted within last 300 sec
     shell: test $(cat /proc/uptime | cut -d. -f1) -lt 300
   when: needs_restarting.stdout|int != 0 and ospatch_reboot == true
 ...
