@@ -13,7 +13,7 @@
 
   - name: wait for host to finish reboot
     wait_for:
-      port: "{{ ansible_port }}"
+      port: "{{ ansible_port|default(ansible_ssh_port) }}"
       host: '{{ (ansible_ssh_host|default(ansible_host))|default(inventory_hostname) }}'
       search_regex: OpenSSH
       delay: 10  # do not check for at least 10 sec
