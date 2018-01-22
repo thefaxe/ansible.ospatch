@@ -19,7 +19,14 @@
       delay: 10  # do not check for at least 10 sec
     connection: local
 
-  - name: confirm host has booted within last 300 sec
+  - name: check if host has booted within last 300 sec
     shell: test $(cat /proc/uptime | cut -d. -f1) -lt 300
+    changed_when: false
+    register: reboot_check
+
+  - name: verify if host has been rebootet
+    fail:
+      msg: "{{ ansible_host }} has not booted, manual check needed"
+    when: reboot_check.rc != 0
   when: needs_restarting.stdout|int != 0 and ospatch_reboot == true
 ...
