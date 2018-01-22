@@ -24,7 +24,7 @@
     changed_when: false
     register: reboot_check
 
-  - name: verify if host has been rebootet
+  - name: alert if host has not been rebootet
     fail:
       msg: "{{ ansible_host }} has not booted, manual check needed"
     when: reboot_check.rc != 0
