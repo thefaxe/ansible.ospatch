@@ -1,7 +1,10 @@
 ---
 - name: perform full os upgrade with dnf cmd
   shell: dnf -y upgrade --best --allowerasing
+  register: dnf-upgrade
+  changed_when: false
   args:
     warn: no
-
+- debug: msg="new packages got installed"
+  when: 'Nothing to do.' not in dnf-upgrade.stdout
 ...
