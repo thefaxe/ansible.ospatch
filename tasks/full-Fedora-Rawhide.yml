@@ -1,4 +1,4 @@
 ---
-- name: perform full os upgrade with dnf
+- name: perform full os upgrade with dnf cmd
   shell: dnf -y upgrade --best --allowerasing
 ...
