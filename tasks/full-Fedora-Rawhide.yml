@@ -1,6 +1,4 @@
 ---
 - name: perform full os upgrade with dnf
-  dnf:
-    name: '*'
-    state: latest
+  shell: dnf -y upgrade --best --allowerasing
 ...
