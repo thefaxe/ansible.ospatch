@@ -1,4 +1,7 @@
 ---
 - name: perform full os upgrade with dnf cmd
   shell: dnf -y upgrade --best --allowerasing
+  args:
+    warn: no
+
 ...
