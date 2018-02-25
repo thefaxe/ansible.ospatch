@@ -1,11 +1,8 @@
 ---
 - name: perform full os upgrade with dnf cmd
   shell: dnf -y upgrade --best --allowerasing
-  register: dnf-upgrade
-  changed_when: false
+  register: dnfout
+  changed_when: dnfout.stdout|search('Nothing to do.')
   args:
     warn: no
-- debug: 
-    msg: new packages got installed
-  when: "'Nothing to do.' not in dnf-upgrade.stdout"
 ...
