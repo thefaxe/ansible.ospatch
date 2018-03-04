@@ -5,7 +5,7 @@
     - role_under_test
   vars:
   - ospatch_level: security
-  - ospatch_reboot: true
+  - ospatch_reboot: false
 
 - hosts: all
   remote_user: root
