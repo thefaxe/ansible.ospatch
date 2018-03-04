@@ -7,3 +7,11 @@
   - ospatch_level: security
   - ospatch_reboot: true
 
+- hosts: all
+  remote_user: root
+  roles:
+    - role_under_test
+  vars:
+  - ospatch_level: full
+  - ospatch_reboot: false
+
