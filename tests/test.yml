@@ -1,0 +1,9 @@
+---
+- hosts: all
+  remote_user: root
+  roles:
+    - joe-speedboat.ospatch
+  vars:
+  - ospatch_level: security
+  - ospatch_reboot: true
+
