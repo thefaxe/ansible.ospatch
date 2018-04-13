@@ -3,9 +3,13 @@ services: docker
 
 env:
   - distro: centos7
+    test_idempotence: false
   - distro: centos6
+    test_idempotence: false
   - distro: ubuntu1604
+    test_idempotence: false
   - distro: ubuntu1404
+    test_idempotence: false
 
 script:
   # Download test shim.
