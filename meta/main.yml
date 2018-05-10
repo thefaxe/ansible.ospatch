@@ -2,7 +2,7 @@
 galaxy_info:
   author: Chris Ruettimann
   company: Bitbull Community
-  description: Install base software and configure system settings on CentOS 7 server
+  description: Patch various OS flavoures
   min_ansible_version: 2.4
   license: GPLv3
   platforms:
