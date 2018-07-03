@@ -14,4 +14,4 @@
   vars:
   - ospatch_level: full
   - ospatch_reboot: false
-
+...

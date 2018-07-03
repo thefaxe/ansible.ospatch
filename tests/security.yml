@@ -6,4 +6,4 @@
   vars:
   - ospatch_level: security
   - ospatch_reboot: true
-
+...
