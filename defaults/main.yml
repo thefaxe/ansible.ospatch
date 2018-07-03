@@ -1,5 +1,5 @@
 ---
-# defaults file for joe-speedboat.ospatch
+# defaults file for joe_speedboat.ospatch
 
 # ospatch_level: [none|security|full]
 ospatch_level: security
