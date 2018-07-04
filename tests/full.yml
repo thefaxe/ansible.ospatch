@@ -2,7 +2,7 @@
 - hosts: all
   remote_user: root
   roles:
-    - joe_speedboat.ospatch
+    - joe_speedboat.ansible_ospatch
   vars:
   - ospatch_level: full
   - ospatch_reboot: true
