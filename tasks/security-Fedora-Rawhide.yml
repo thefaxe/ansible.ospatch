@@ -1,13 +1,11 @@
 ---
-- name: install needed packages
-  dnf: 
-    name: yum-utils
-    state: present
-- name: install security patches with yum (dnf does not yet provide security patch selection)
-  yum:
-    name: '*'
-    state: latest
-    security: yes
+- name: install security patches with dnf
+  shell: dnf -y upgrade-minimal
+  register: dnfout
+  changed_when: not dnfout.stdout|search('No security updates needed')
+  args:
+    warn: no
+
 - name: install all kernel updates with yum
   dnf:
     name: 'kernel*'
