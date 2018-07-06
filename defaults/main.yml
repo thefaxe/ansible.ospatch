@@ -1,5 +1,5 @@
 ---
-# defaults file for joe_speedboat.ansible_ospatch
+# defaults file for joe-speedboat.ansible_ospatch
 
 # ospatch_level: [none|security|full]
 ospatch_level: security

@@ -1,5 +1,5 @@
 ---
-# tasks file for joe_speedboat.ansible_ospatch
+# tasks file for joe-speedboat.ansible_ospatch
 
 - include_tasks: '{{item}}'
   with_first_found:
