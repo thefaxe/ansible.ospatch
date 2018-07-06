@@ -5,9 +5,4 @@
   changed_when: not dnfout.stdout|search('No security updates needed')
   args:
     warn: no
-
-- name: install all kernel updates with yum
-  dnf:
-    name: 'kernel*'
-    state: latest
 ...
