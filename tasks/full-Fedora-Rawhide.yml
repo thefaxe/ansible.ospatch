@@ -1,8 +1,7 @@
 ---
-- name: perform full os upgrade with dnf cmd
-  shell: dnf -y upgrade --best --allowerasing
-  register: dnfout
-  changed_when: not dnfout.stdout|search('Nothing to do.')
-  args:
-    warn: no
+- name: perform full os upgrade
+  dnf:
+    name: "*"
+    state: latest
+
 ...
