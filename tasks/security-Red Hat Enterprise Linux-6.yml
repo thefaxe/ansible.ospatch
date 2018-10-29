@@ -1,11 +1,10 @@
 ---
 - name: install needed packages
   yum:
-    name: "{{ item }}"
+    name: 
+      - yum-plugin-security
+      - yum-utils
     state: present
-  with_items:
-  - yum-plugin-security
-  - yum-utils
 - name: install security patches with yum
   yum:
     name: '*'
