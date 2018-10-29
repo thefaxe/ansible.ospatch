@@ -1,7 +1,7 @@
 ---
 # tasks file for joe-speedboat.ansible_ospatch
 
-- include_tasks: '{{item}}'
+- include_tasks: '{{ patch_host }}'
   with_first_found:
     - files:
         - '{{ ospatch_level }}-{{ansible_distribution}}-{{ansible_distribution_major_version}}.yml'
@@ -9,8 +9,10 @@
         - '{{ ospatch_level }}-{{ansible_distribution}}.yml'
         - '{{ ospatch_level }}-{{ansible_os_family}}.yml'
       skip: true
+  loop_control:
+    loop_var: patch_host
 
-- include_tasks: '{{item}}'
+- include_tasks: '{{ boot_host }}'
   with_first_found:
     - files:
         - 'reboot-{{ansible_distribution}}-{{ansible_distribution_major_version}}.yml'
@@ -18,3 +20,5 @@
         - 'reboot-{{ansible_distribution}}.yml'
         - 'reboot-{{ansible_os_family}}.yml'
       skip: true
+  loop_control:
+    loop_var: boot_host
