@@ -1,6 +1,9 @@
 ---
 # tasks file for joe-speedboat.ansible_ospatch
 
+- name: check if host is online
+  include_tasks: ping.yml
+
 - include_tasks: '{{ patch_host }}'
   with_first_found:
     - files:
