@@ -17,6 +17,8 @@
   ping:
   register: ping
   failed_when: false
+  when: ping.failed == false
+
 
 
 ...
