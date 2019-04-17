@@ -11,7 +11,7 @@
     search_regex: OpenSSH
     delay: 10  # do not check for at least 10 sec
   connection: local
-  when: ping.failed is true
+  when: ping.failed == true
 
 - name: finally, we decide to proceed or fail
   ping:
