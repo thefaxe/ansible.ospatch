@@ -10,7 +10,7 @@ ospatch_reboot: true
 
 # remove old kernel to free space
 # ospatch_remove_old_kernel: [true|false]
-#ospatch_remove_old_kernel: true
-#ospatch_keep_kernel_nr: 3
+ospatch_remove_old_kernel: true
+ospatch_keep_kernel_nr: 2
 
 ...
