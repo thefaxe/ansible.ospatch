@@ -7,21 +7,23 @@
 - include_tasks: '{{ patch_host }}'
   with_first_found:
     - files:
-        - '{{ ospatch_level }}-{{ansible_distribution}}-{{ansible_distribution_major_version}}.yml'
-        - '{{ ospatch_level }}-{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - '{{ ospatch_level }}-{{ansible_distribution}}.yml'
-        - '{{ ospatch_level }}-{{ansible_os_family}}.yml'
+        - '{{ ospatch_level }}-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - '{{ ospatch_level }}-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - '{{ ospatch_level }}-{{ ansible_distribution }}.yml'
+        - '{{ ospatch_level }}-{{ ansible_os_family }}.yml'
       errors: 'ignore'
   loop_control:
     loop_var: patch_host
 
+- debug: var=ansible_distribution
+
 - include_tasks: '{{ boot_host }}'
   with_first_found:
     - files:
-        - 'reboot-{{ansible_distribution}}-{{ansible_distribution_major_version}}.yml'
-        - 'reboot-{{ansible_distribution}}-{{ansible_distribution_release}}.yml'
-        - 'reboot-{{ansible_distribution}}.yml'
-        - 'reboot-{{ansible_os_family}}.yml'
+        - 'reboot-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - 'reboot-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - 'reboot-{{ ansible_distribution }}.yml'
+        - 'reboot-{{ ansible_os_family }}.yml'
       errors: 'ignore'
   loop_control:
     loop_var: boot_host
