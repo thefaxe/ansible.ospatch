@@ -15,7 +15,7 @@
   loop_control:
     loop_var: patch_host
 
-- debug: var=ansible_distribution
+- debug: msg="{{ ospatch_level }}-{{ ansible_os_family }}.yml"
 
 - include_tasks: '{{ boot_host }}'
   with_first_found:
