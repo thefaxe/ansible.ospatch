@@ -25,3 +25,15 @@
       errors: 'ignore'
   loop_control:
     loop_var: boot_host
+
+- include_tasks: '{{ kernel_cleanup_host }}'
+  with_first_found:
+    - files:
+        - 'kernel-cleanup-{{ ansible_distribution }}-{{ ansible_distribution_major_version }}.yml'
+        - 'kernel-cleanup-{{ ansible_distribution }}-{{ ansible_distribution_release }}.yml'
+        - 'kernel-cleanup-{{ ansible_distribution }}.yml'
+        - 'kernel-cleanup-{{ ansible_os_family }}.yml'
+      errors: 'ignore'
+  loop_control:
+    loop_var: kernel_cleanup_host
+  when: ospatch_remove_old_kernel
