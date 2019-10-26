@@ -2,5 +2,5 @@
 - name: make sure needed software is installed
   yum: name=yum-utils
 - name: remove old kernel packages for RPM based systems
-  shell:  package-cleanup -y --oldkernels --count='{{ package_cleanup_keep_old_kernels }}'
+  shell:  package-cleanup -y --oldkernels --count='{{ ospatch_remove_old_kernel }}'
 ...
