@@ -2,5 +2,5 @@
 - name: make sure needed software is installed
   dnf: name=dnf-utils
 - name: remove old kernel packages for RPM based systems
-  shell:  package-cleanup -y --oldkernels --count='{{ ospatch_remove_old_kernel }}'
+  shell:  package-cleanup -y --oldkernels --count='{{ ospatch_keep_kernel_nr: }}'
 ...
