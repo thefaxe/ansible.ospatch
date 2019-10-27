@@ -28,5 +28,5 @@
     fail:
       msg: "{{ ansible_host }} has not booted, manual check needed"
     when: reboot_check.rc != 0
-  when: needs_restarting.stdout|int != 0 and ospatch_reboot == true
+  when: needs_restarting.stdout|int != 0 
 ...

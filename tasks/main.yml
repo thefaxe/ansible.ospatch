@@ -25,6 +25,7 @@
       errors: 'ignore'
   loop_control:
     loop_var: boot_host
+  when: ospatch_reboot
 
 - include_tasks: '{{ kernel_cleanup_host }}'
   with_first_found:
@@ -36,4 +37,4 @@
       errors: 'ignore'
   loop_control:
     loop_var: kernel_cleanup_host
-  when: ospatch_remove_old_kernel
+  when: ospatch_remove_old_kernel and ospatch_reboot
