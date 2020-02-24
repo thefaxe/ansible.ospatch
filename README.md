@@ -1,7 +1,7 @@
 Role Name
 =========
 
-This role will aply security or full patching to CentOS or Ubuntu machines.
+This role will aply security or full patching to CentOS, Debian or Ubuntu machines.
 
 Requirements
 ------------
